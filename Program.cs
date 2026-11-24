@@ -1,4 +1,6 @@
-﻿namespace Boss_final;
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace Boss_final;
 
 /*
     CONSIGNES
@@ -34,6 +36,36 @@ class Program
 {
     static void Main(string[] args)
     {
-        
+        int currentBossLife = 150;
+        int weaponDamage = CalculateWeaponDamage(40);
+        Console.WriteLine("première attaque");
+        currentBossLife = CalculateRemainingHealth(currentBossLife, weaponDamage);
+        DisplayBossStatus(currentBossLife);
+        Console.WriteLine("deuxième attaque");
+        currentBossLife = CalculateRemainingHealth(currentBossLife, weaponDamage);
+        DisplayBossStatus(currentBossLife);
+    }
+
+    static int CalculateWeaponDamage(int weaponDamage)
+    {
+        return weaponDamage;
+    }
+
+    static int CalculateRemainingHealth(int currentBossLife, int weaponDamage)
+    {
+        currentBossLife -= weaponDamage;
+        return currentBossLife;
+    }
+
+    static void DisplayBossStatus(int currentBossLife)
+    {
+        if (currentBossLife > 0)
+        {
+            Console.WriteLine("Le boss est toujours vivant !\nIl lui reste : " + currentBossLife + "pv");
+        }
+        else
+        {
+            Console.WriteLine("Félicitations ! Le boss est vaincu !");
+        }
     }
 }
